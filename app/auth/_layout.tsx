@@ -9,6 +9,13 @@ export default function Layout() {
                 tabBarActiveBackgroundColor: colors.accentOrange,
                 tabBarStyle: {
                     backgroundColor: colors.darkGreen,
+                    borderTopWidth: 0,
+                    margin: -25,
+                    marginTop: 0,
+                    height: 80,
+                },
+                tabBarItemStyle: {
+                    flex: 1, // Ocupa o espaço inteiro
                 },
             }}
         >
@@ -18,7 +25,7 @@ export default function Layout() {
                     tabBarIcon: () => (<EvilIcons name="camera" size={24} color="white" />),
                     tabBarLabel: 'Home',
                     headerTitle: 'Fishergram',
-                    headerStyle: { backgroundColor: 'white' },
+                    headerStyle: { flex: 1, backgroundColor: 'white' },
                     headerTitleStyle: { color: colors.darkGreen, fontWeight: 'bold', fontSize: 26, },
                     tabBarLabelStyle: { color: 'white' },
 
