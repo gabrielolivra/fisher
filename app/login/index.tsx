@@ -1,18 +1,8 @@
-// screens/LoginScreen.tsx
 import { colors } from '@/constants/Colors';
 import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
-// Defina os tipos para as rotas do seu Stack Navigator
-type RootStackParamList = {
-    Banner: undefined;
-    Login: undefined;
-    Register: undefined;
-    Home: undefined;
-};
-
+import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function LoginScreen() {
     const [email, setEmail] = useState<string>('');
@@ -29,6 +19,7 @@ export default function LoginScreen() {
 
     return (
         <View style={styles.container}>
+            <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
             <StatusBar style="dark" />
             <Text style={styles.title}>Bem-vindo de volta!</Text>
             <TextInput
@@ -56,10 +47,8 @@ export default function LoginScreen() {
             </TouchableOpacity>
             <View style={styles.registerContainer}>
                 <Text style={styles.registerText}>Não tem uma conta?</Text>
-                <Link href={'/sign-up'} asChild>
-                    <TouchableOpacity>
-                        <Text style={styles.registerLink}> Cadastre-se</Text>
-                    </TouchableOpacity>
+                <Link href={{ pathname: '/register' }} asChild>
+                    <TouchableOpacity><Text style={styles.registerLink}> Cadastre-se</Text></TouchableOpacity>
                 </Link>
             </View>
         </View>
@@ -79,6 +68,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: colors.darkGreen,
         marginBottom: 40,
+    },
+    logo: {
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
+        marginBottom: 20,
     },
     input: {
         width: '100%',

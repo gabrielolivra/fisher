@@ -1,7 +1,8 @@
 import { colors } from '@/constants/Colors';
+import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
 // Defina os tipos para as rotas do seu Stack Navigator
@@ -34,7 +35,8 @@ export default function RegisterScreen() {
 
     return (
         <View style={styles.container}>
-            <StatusBar style="dark" />
+            <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
+            <StatusBar style="light" />
             <Text style={styles.title}>Crie sua conta</Text>
             <TextInput
                 style={styles.input}
@@ -73,9 +75,11 @@ export default function RegisterScreen() {
             </TouchableOpacity>
             <View style={styles.loginContainer}>
                 <Text style={styles.loginText}>Já tem uma conta?</Text>
-                <TouchableOpacity >
-                    <Text style={styles.loginLink}> Entrar</Text>
-                </TouchableOpacity>
+                <Link href={'/login'} asChild>
+                    <TouchableOpacity >
+                        <Text style={styles.loginLink}> Entrar</Text>
+                    </TouchableOpacity>
+                </Link>
             </View>
         </View>
     );
@@ -94,6 +98,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: colors.darkGreen,
         marginBottom: 40,
+    },
+    logo: {
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
+        marginBottom: 20,
     },
     input: {
         width: '100%',

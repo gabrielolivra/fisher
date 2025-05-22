@@ -5,26 +5,17 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
-// Defina os tipos para as rotas do seu Stack Navigator
-// Isso é crucial para a tipagem da navegação
-type RootStackParamList = {
-    Banner: undefined;
-    Login: undefined;
-    Register: undefined;
-    Home: undefined;
-};
-
 export default function BannerScreen() {
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
             <View style={styles.logoContainer}>
                 {/* Substitua por sua imagem de logo real */}
-                {/* <Image source={require('../assets/fishergram-logo.png')} style={styles.logo} /> */}
+
                 <Text style={styles.logoText}>Fishergram</Text>
                 <Text style={styles.subtitle}>Sua rede social de pesca!</Text>
             </View>
-            <Link href='/log-in' asChild>
+            <Link href='/login' asChild>
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Começar</Text>
                 </TouchableOpacity>
@@ -44,12 +35,7 @@ const styles = StyleSheet.create({
     logoContainer: {
         alignItems: 'center',
     },
-    logo: {
-        width: 150,
-        height: 150,
-        resizeMode: 'contain',
-        marginBottom: 20,
-    },
+
     logoText: {
         fontSize: 48,
         fontWeight: 'bold',
