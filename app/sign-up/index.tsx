@@ -5,7 +5,7 @@ export default function SingUpScreen() {
     return (
         <SafeAreaProvider>
             <View>
-                <Text>Tela de login</Text>
+                <Text>Tela de Cadastro</Text>
             </View>
         </SafeAreaProvider>
     )
