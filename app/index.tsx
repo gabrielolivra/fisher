@@ -1,67 +1,80 @@
-import Button from '@/components/ui/Button';
-import colors from '@/constants/Colors';
+import { colors } from '@/constants/Colors';
 import { Link } from 'expo-router';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function HomeScreen() {
+
+// Defina os tipos para as rotas do seu Stack Navigator
+// Isso é crucial para a tipagem da navegação
+type RootStackParamList = {
+    Banner: undefined;
+    Login: undefined;
+    Register: undefined;
+    Home: undefined;
+};
+
+export default function BannerScreen() {
     return (
-        <SafeAreaView style={styles.safeArea}>
-            {/* Header View */}
-            <View style={styles.header}>
-                <Text style={styles.headerText}>Fishergram</Text>
+        <View style={styles.container}>
+            <StatusBar style="light" />
+            <View style={styles.logoContainer}>
+                {/* Substitua por sua imagem de logo real */}
+                {/* <Image source={require('../assets/fishergram-logo.png')} style={styles.logo} /> */}
+                <Text style={styles.logoText}>Fishergram</Text>
+                <Text style={styles.subtitle}>Sua rede social de pesca!</Text>
             </View>
-
-            <View style={styles.contentContainer}>
-                <Image source={{ uri: 'https://picsum.photos/200/300' }} style={styles.image} />
-
-                <Text style={styles.title}>Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.
-                    orum ut nam eius provident possimus?</Text>
-                <View style={styles.buttonContainer}>
-                    <Link href='/log-in' asChild><Button>Log In</Button></Link>
-                    <Link href='/sign-up' asChild><Button>Sign Up</Button></Link>
-                </View>
-            </View>
-        </SafeAreaView>
+            <Link href='/log-in' asChild>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Começar</Text>
+                </TouchableOpacity>
+            </Link>
+        </View>
     );
 }
+
 const styles = StyleSheet.create({
-    safeArea: {
+    container: {
         flex: 1,
-        backgroundColor: colors.background
-    },
-    header: {
-        height: 60,
+        backgroundColor: colors.primaryGreen,
+        justifyContent: 'space-around',
         alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 10,
+        padding: 20,
     },
-    headerText: {
-        fontSize: 30,
+    logoContainer: {
+        alignItems: 'center',
+    },
+    logo: {
+        width: 150,
+        height: 150,
+        resizeMode: 'contain',
+        marginBottom: 20,
+    },
+    logoText: {
+        fontSize: 48,
         fontWeight: 'bold',
-        color: 'white',
+        color: colors.white,
+        marginBottom: 10,
     },
-    contentContainer: {
-        flex: 1,
-        marginTop: 80,
-        paddingHorizontal: 5,
-    },
-    title: {
-        fontSize: 20,
+    subtitle: {
+        fontSize: 18,
+        color: colors.lightGreen,
         textAlign: 'center',
+    },
+    button: {
+        backgroundColor: colors.accentOrange,
+        paddingVertical: 15,
+        paddingHorizontal: 40,
+        borderRadius: 30,
+        elevation: 3,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
+    buttonText: {
+        color: colors.white,
+        fontSize: 20,
         fontWeight: 'bold',
-        color: 'white',
     },
-    image: {
-        width: 'auto',
-        height: 250,
-        marginBottom: 15,
-        borderRadius: 20,
-    },
-    buttonContainer: {
-        flex: 1,
-        gap: 10,
-        marginTop: 80
-    }
 });

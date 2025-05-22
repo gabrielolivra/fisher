@@ -1,10 +1,13 @@
-// Em constants/Colors.ts (exemplo)
-export default {
-  text: '#000000',
-  background: '#2D5F3A',
-  gray: '#757575', // Darker gray for better placeholder contrast on white
-  inputBackground: '#FFFFFF',
-  border: '#BDBDBD', // More defined border for inputs/cards on white
-  error: '#D32F2F', // Strong error red with good contrast on white
-  card: '#FFFFFF',
-};
+// constants/colors.ts
+export const colors = {
+  primaryGreen: '#4CAF50',
+  darkGreen: '#388E3C',
+  lightGreen: '#81C784',
+  accentOrange: '#FF9800',
+  white: '#FFFFFF',
+  offWhite: '#F5F5F5',
+  grayText: '#757575',
+  darkGrayText: '#424242',
+  dividerGray: '#E0E0E0',
+  errorRed: '#D32F2F',
+} as const; // 'as const' garante que os valores sejam inferidos como literais de string

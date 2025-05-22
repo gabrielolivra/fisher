@@ -4,7 +4,7 @@ export default function Layout() {
     return (
         <Stack screenOptions={{ headerShown: false }} >
             <Stack.Screen name="index" options={{
-                headerShown: true,
+                headerShown: false,
                 headerTitle: 'Login',
                 headerTitleAlign: 'center'
             }} />

@@ -1,54 +1,130 @@
+// screens/LoginScreen.tsx
+import { colors } from '@/constants/Colors';
+import { Link } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import Input from "@/components/ui/Input";
-import colors from "@/constants/Colors";
-import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+// Defina os tipos para as rotas do seu Stack Navigator
+type RootStackParamList = {
+    Banner: undefined;
+    Login: undefined;
+    Register: undefined;
+    Home: undefined;
+};
 
-export default function LogInScreen() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+
+export default function LoginScreen() {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const handleLogin = (): void => {
+        if (email && password) {
+            console.log('Tentando login com:', email, password);
+            Alert.alert('Login', 'Login realizado com sucesso! (Simulado)');
+        } else {
+            Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+        }
+    };
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.formContainer}>
-                <Text style={styles.title}>Log In</Text>
-                <Input
-                    label="Email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChangeText={setEmail}
-                    keyboardType="email-address"
-                />
-                <Input
-                    label="Password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
+        <View style={styles.container}>
+            <StatusBar style="dark" />
+            <Text style={styles.title}>Bem-vindo de volta!</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                placeholderTextColor={colors.grayText}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Senha"
+                placeholderTextColor={colors.grayText}
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+            />
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <Text style={styles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Alert.alert('Recuperar Senha', 'Funcionalidade em desenvolvimento!')}>
+                <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
+            </TouchableOpacity>
+            <View style={styles.registerContainer}>
+                <Text style={styles.registerText}>Não tem uma conta?</Text>
+                <Link href={'/sign-up'} asChild>
+                    <TouchableOpacity>
+                        <Text style={styles.registerLink}> Cadastre-se</Text>
+                    </TouchableOpacity>
+                </Link>
             </View>
-        </SafeAreaView>
-    )
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.background, // Assuming you have this color
+        backgroundColor: colors.offWhite,
         justifyContent: 'center',
+        alignItems: 'center',
         padding: 20,
-    },
-    formContainer: {
-        backgroundColor: colors.card, // Assuming you have a card background color
-        padding: 20,
-        borderRadius: 10,
     },
     title: {
-        fontSize: 24,
+        fontSize: 28,
         fontWeight: 'bold',
-        color: colors.text, // Assuming you have this color
-        textAlign: 'center',
-        marginBottom: 20,
-    }
+        color: colors.darkGreen,
+        marginBottom: 40,
+    },
+    input: {
+        width: '100%',
+        backgroundColor: colors.white,
+        paddingHorizontal: 15,
+        paddingVertical: 12,
+        borderRadius: 8,
+        fontSize: 16,
+        borderWidth: 1,
+        borderColor: colors.dividerGray,
+        marginBottom: 15,
+    },
+    button: {
+        width: '100%',
+        backgroundColor: colors.primaryGreen,
+        paddingVertical: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 10,
+        elevation: 3,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
+    buttonText: {
+        color: colors.white,
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    forgotPassword: {
+        color: colors.grayText,
+        marginTop: 15,
+        fontSize: 14,
+    },
+    registerContainer: {
+        flexDirection: 'row',
+        marginTop: 30,
+    },
+    registerText: {
+        color: colors.grayText,
+        fontSize: 16,
+    },
+    registerLink: {
+        color: colors.primaryGreen,
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });
