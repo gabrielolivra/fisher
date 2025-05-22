@@ -12,7 +12,7 @@ export default function Button({ children, ...rest }: TouchableOpacityProps) {
 const styles = StyleSheet.create({
     button: {
         width: '100%',
-        backgroundColor: colors.primary,
+        backgroundColor: colors.card,
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',
@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     text: {
         fontWeight: '600',
         fontSize: 18,
-        color: colors.secondary
+        color: colors.text
     }
 })

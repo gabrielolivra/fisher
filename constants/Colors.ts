@@ -1,12 +1,10 @@
-// theme.js
-const colors = {
-  primary: '#FFFFFF',
-  secondary: '#4C8B5B',
-  accent: '#DFF1E3',
+// Em constants/Colors.ts (exemplo)
+export default {
+  text: '#000000',
   background: '#2D5F3A',
-  surface: '#F5F5F5',
-  textPrimary: '#000000',
-  textSecondary: '#00000066',
+  gray: '#757575', // Darker gray for better placeholder contrast on white
+  inputBackground: '#FFFFFF',
+  border: '#BDBDBD', // More defined border for inputs/cards on white
+  error: '#D32F2F', // Strong error red with good contrast on white
+  card: '#FFFFFF',
 };
-
-export default colors;
