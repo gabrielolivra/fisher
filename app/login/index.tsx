@@ -1,5 +1,5 @@
 import { colors } from '@/constants/Colors';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -8,10 +8,12 @@ export default function LoginScreen() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+    const route = useRouter()
     const handleLogin = (): void => {
         if (email && password) {
             console.log('Tentando login com:', email, password);
             Alert.alert('Login', 'Login realizado com sucesso! (Simulado)');
+            route.replace('/auth')
         } else {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
         }
